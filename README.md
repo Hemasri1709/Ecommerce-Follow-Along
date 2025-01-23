@@ -53,3 +53,68 @@ Major Points Covered:
 - Basic Routes: Implemented basic routes for user registration and login.
 
 This milestone established the backend foundation, enabling us to build and expand the API endpoints and integrate them with the frontend in future milestones.
+
+## Milestone 4: User Model, Controller, and File Uploads  
+
+In this milestone, we expanded the backend functionality by introducing a user management system and enabling file uploads. These enhancements set the stage for building a more interactive and user-friendly application.  
+
+### Major Points Covered:  
+1. **User Model**:  
+   - Defined a schema using Mongoose to structure user data, including fields like name, email, and password.  
+   - Established validation rules for secure and consistent data storage.  
+
+2. **User Controller**:  
+   - Created functions to handle user-related operations, such as registering new users and retrieving user details.  
+   - Organized controller logic to maintain a clean and modular codebase.  
+
+3. **File Uploads with Multer**:  
+   - Integrated Multer middleware to handle file uploads (e.g., profile pictures).  
+   - Configured storage settings to save uploaded files to the server.  
+
+4. **Backend Refinements**:  
+   - Improved code organization by separating logic into dedicated folders for models, controllers, and routes.  
+   - Updated environment variables for secure configuration management.  
+
+This milestone reinforces the backend's robustness by adding essential features like user data handling and file management.  
+
+
+## Milestone 5: Sign-Up Page and Validation
+
+Learning Goals
+By the end of this milestone, you will:
+
+Build the frontend UI for users to register by filling out their details.
+Implement form validation to ensure that user inputs, like email and password, are correct before submission.
+
+Key Concepts
+What is a Sign-Up Page?
+The Sign-Up page allows users to input their details to create an account. Typical fields include:
+
+Name
+Email
+Password
+This page will send user information to the server for processing.
+What is Form Validation?
+Form validation ensures that user inputs are correct and in the proper format:
+
+Email format validation ensures the email entered is in the correct format (e.g., user@example.com).
+Password validation checks for:
+Minimum 6 characters.
+At least one uppercase letter.
+At least one number.
+At least one special character. Form validation prevents errors and ensures the backend receives clean and valid data.
+
+Steps for Milestone 5
+Sign-Up Page Development
+
+Created a user-friendly sign-up form with fields for Name, Email, and Password.
+Styled the form using Tailwind CSS to ensure responsiveness and visual appeal.
+Form Validation Implementation
+
+Implemented client-side form validation to ensure that:
+The email entered is valid.
+The password meets the required security criteria.
+Displayed clear error messages to guide users through correcting their input.
+
+Outcome
+At the end of this milestone, the Sign-Up Page is fully functional with proper form validation, ensuring that only valid data is submitted. This enhances the overall user experience and prepares the application for future steps, including backend integration and authentication.
