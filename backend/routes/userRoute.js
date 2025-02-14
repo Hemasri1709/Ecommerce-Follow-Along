@@ -1,17 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const upload = require('../configurations/multer');
-const { signup } = require('../controllers/userControllers');
 
-router.post ("/signup", signup)
+const signUp = require("../controllers/userController");
+const login = require("../controllers/loginController");
 
-// router.post('/upload', upload.single('myImage'), (req, res) => {
-//   if (!req.file) {
-//     return res.status(400).send({ message: 'No file uploaded!' });
-//   }
-//   res.send({ message: 'File uploaded!', file: req.file.path });
-// });
+router.post("/login", login);
+router.post("/signup", signUp);
 
 module.exports = router;
-
-
