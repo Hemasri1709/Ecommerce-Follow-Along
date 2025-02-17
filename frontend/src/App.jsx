@@ -9,7 +9,7 @@ import EditProductForm from "./components/EditProductForm"; // Import EditProduc
 import ProductInfo from "./components/ProductInfo"; // Import ProductInfo
 
 const App = () => {
-    const userEmail = "vimlabhatt97@gmail.com"; // Replace with the actual user email
+    const userEmail = "guthulahemasri410@gmail.com"; // Replace with the actual user email
 
     return (
         <Router>

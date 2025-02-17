@@ -14,14 +14,14 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-teal-500 to-black">
       <div className="container mx-auto p-8">
         <header className="text-center mb-12">
           <h1 className="text-5xl font-extrabold text-white">Welcome to Our Store</h1>
-          <p className="text-lg text-gray-200 mt-4">Discover the best products at unbeatable prices</p>
+          <p className="text-lg text-gray-200 mt-4">Discover the best products at Reasonable prices</p>
         </header>
         <div className="text-center mb-8">
-          <Link to="/form" className="text-white text-lg font-medium bg-purple-500 hover:bg-purple-700 px-5 py-3 rounded-lg transition-all duration-200">
+          <Link to="/form" className="text-white text-lg font-medium bg-gradient-to-r from-green-400 to-teal-500 hover:bg-gradient-to-l px-5 py-3 rounded-lg transition-all duration-200">
             Add Product
           </Link>
         </div>
