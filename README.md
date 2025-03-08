@@ -404,3 +404,182 @@ Write an endpoint that will send all products with user mail to frontend In fron
 - Updated the user schema to include a cart field.
 - Created a new Cart schema to manage cart data.
 - Implemented an endpoint to handle adding products to the cart and storing them in the database.
+
+
+## Milestone 18: Cart Functionality
+
+### Learning Goals 🎯
+By the end of this milestone, you will:
+- Create an endpoint to receive requests from the cart page.
+- Create a backend endpoint to fetch all the products inside the cart with the user's email.
+
+### Steps for Milestone 18 📝
+1. Create a backend endpoint for the cart page.
+2. Write an endpoint to get products inside the cart for the user.
+
+### Outcome
+This lesson will help you understand how to create cart functionality, allowing users to view and manage the products in their cart.
+
+### Progress
+- Added an endpoint to receive requests from the cart page.
+- Implemented a backend endpoint to fetch all products inside the cart using the user's email.
+
+
+## Milestone 19: Cart Quantity Management
+
+### Learning Goals 🎯
+By the end of this milestone, you will:
+- Create a cart page that displays the products inside the cart using the endpoint built in Milestone 18.
+- For each product, add an option to increase and decrease quantity using + and - buttons.
+- Write an endpoint to increase and decrease the quantity.
+
+### Steps for Milestone 19 📝
+1. Create a cart frontend page and display the products.
+2. For each product, add an option to increase and decrease quantity using + and - buttons.
+3. Create a backend endpoint to increase and decrease quantity.
+
+### Outcome
+This lesson will help you understand how to create cart functionality, allowing users to manage the quantity of products in their cart.
+
+### Progress
+- Created a cart page to display products inside the cart.
+- Added + and - buttons for each product to manage quantity.
+- Implemented backend endpoints to handle quantity updates.
+
+
+## Milestone 20: User Profile Page
+
+### Learning Goals 🎯
+By the end of this milestone, you will:
+- Create a backend endpoint that will send user data using email.
+- Create a frontend profile page that will display all the user data.
+- Display profile photo, name, and email in one section.
+- Display addresses in another section with an "Add address" button.
+- If there are no addresses, display "No address found".
+
+### Steps for Milestone 20 📝
+1. Create a backend endpoint that will send user data.
+2. Create a frontend profile page.
+3. Display profile photo, name, and email in one section.
+4. Display addresses in another section with an "Add address" button.
+5. If there are no addresses, display "No address found".
+
+### Outcome
+This lesson will help you understand how to display a profile page with user data and addresses.
+
+### Progress
+- Added a backend endpoint to send user data using email.
+- Created a frontend profile page to display user data.
+- Displayed profile photo, name, and email in one section.
+- Displayed addresses in another section with an "Add address" button.
+- Displayed "No address found" if there are no addresses.
+
+## Milestone 21: Address Form
+
+### Learning Goals 🎯
+By the end of this milestone, you will:
+- Create a frontend form that will take address details.
+- Take inputs for country, city, address1, address2, zip code, and address type.
+
+### Steps for Milestone 21 📝
+1. Create an address form frontend page.
+2. Create a state that will store input address.
+3. When clicking on "Add address" in the profile, it should navigate to this form page.
+
+### Outcome
+This lesson will help you understand how to create an address form and manage address data in the frontend.
+
+## Milestone 22: Save Address in User Profile
+
+### Learning Goals 🎯
+By the end of this milestone, you will:
+- Create a backend endpoint that will store the address inside the user profile in the database.
+
+### Steps for Milestone 22 📝
+1. Create an endpoint that will receive the address from the address form in the frontend.
+2. Add the address to the address array inside the user collection.
+
+### Outcome
+This lesson will help you understand how to create an endpoint that will store the address in the user profile.
+
+## Milestone 23
+
+By the end of this milestone, you will:
+
+- Add a "Place Order" button inside the cart page.
+- Create a select address page where all the addresses are displayed, and the user can select a delivery address.
+- Write a Mongoose schema for storing order details.
+
+#### Steps for Milestone 23
+
+1. **Add a "Place Order" button inside the cart page:**
+   - Navigate to the `Cart` component.
+   - Add a button that navigates to the select address page when clicked.
+
+2. **Create a select address page:**
+   - Create a new component `SelectAddress`.
+   - Fetch and display all the available addresses for the user.
+   - Allow the user to select one address.
+
+3. **Write a Mongoose schema for storing order details:**
+   - Create a new Mongoose schema `orderModel.js` to store order details.
+
+#### Code Changes
+
+1. **Cart Component:**
+   - Add a "Place Order" button that navigates to the select address page.
+
+2. **Select Address Component:**
+   - Create a new component to display all available addresses and allow the user to select one.
+
+3. **Order Model:**
+   - Create a new Mongoose schema for storing order details.
+
+4. **User Route:**
+   - Add a new endpoint to get all addresses of a user.
+
+5. **User Controller:**
+   - Ensure the `addAddress` function is implemented correctly.
+
+6. **App Component:**
+   - Add a route for the `SelectAddress` component.
+
+## Milestone 24: Order Confirmation Page
+
+### Learning Goals 🎯
+By the end of this milestone, you will:
+- Create an order confirmation page.
+- Display the products being ordered, the selected delivery address, and the total price.
+- Add a "Place Order" button at the bottom.
+
+### Steps for Milestone 24 📝
+1. **Create the Order Confirmation Page:**
+   - Create a new component `OrderConfirmation`.
+   - Fetch and display the products being ordered.
+   - Display the selected delivery address.
+   - Display the total price of the cart.
+   - Add a "Place Order" button at the bottom.
+
+### Outcome
+This lesson will help you understand how to implement an order confirmation page that displays the products being ordered, the selected delivery address, and the total price. The user can then place the order by clicking the "Place Order" button.
+
+### Code Changes
+
+1. **Order Confirmation Component:**
+   - Create a new component to display the order confirmation details.
+   - Ensure the component correctly handles the state passed from the `SelectAddress` component.
+
+2. **Select Address Component:**
+   - Update the component to navigate to the `OrderConfirmation` page with the selected address and cart details.
+
+3. **App Component:**
+   - Add a route for the `OrderConfirmation` component.
+
+### Progress
+- Created an order confirmation page to display the products being ordered, the selected delivery address, and the total price.
+- Added a "Place Order" button at the bottom of the order confirmation page.
+- Ensured the `OrderConfirmation` component correctly handles the state passed from the `SelectAddress` component.
+
+
+
+

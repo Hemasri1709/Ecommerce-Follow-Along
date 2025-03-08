@@ -2,16 +2,34 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navigation = () => {
+    const userEmail = "vimlabhatt97@gmail.com"; // Replace with the actual user email
+
     return (
-        <nav className="bg-gradient-to-r from-teal-600 to-black shadow-lg">
+        <nav className="bg-gradient-to-r from-indigo-500 to-purple-600 shadow-lg">
             <div className="container mx-auto flex items-center justify-between px-8 py-5">
                 {/* Logo or Brand Name */}
                 <div className="text-white text-3xl font-extrabold">
-                    <Link to="/">Shop Easy</Link>
+                    <Link to="/">E-Shop</Link>
                 </div>
 
                 {/* Navigation Links */}
                 <ul className="flex space-x-8">
+                    <li>
+                        <Link
+                            to="/login"
+                            className="text-white text-lg font-medium hover:text-gray-200 px-5 py-3 rounded-lg transition-all duration-200"
+                        >
+                            Login
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/signup"
+                            className="text-white text-lg font-medium hover:text-gray-200 px-5 py-3 rounded-lg transition-all duration-200"
+                        >
+                            Signup
+                        </Link>
+                    </li>
                     <li>
                         <Link
                             to="/home"
@@ -24,8 +42,8 @@ const Navigation = () => {
                         <Link
                             to="/form"
                             className="text-white text-lg font-medium hover:text-gray-200 px-5 py-3 rounded-lg transition-all duration-200"
-                        >
-                           ProductForm
+                        > 
+                            Product Form
                         </Link>
                     </li>
                     <li>
@@ -38,18 +56,18 @@ const Navigation = () => {
                     </li>
                     <li>
                         <Link
-                            to="/login"
+                            to="/cart"
                             className="text-white text-lg font-medium hover:text-gray-200 px-5 py-3 rounded-lg transition-all duration-200"
-                        > 
-                            Login
+                        >
+                            Cart
                         </Link>
                     </li>
                     <li>
                         <Link
-                            to="/signup"
+                            to={`/profile/${userEmail}`}
                             className="text-white text-lg font-medium hover:text-gray-200 px-5 py-3 rounded-lg transition-all duration-200"
                         >
-                            Signup
+                            Profile
                         </Link>
                     </li>
                 </ul>

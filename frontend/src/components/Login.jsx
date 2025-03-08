@@ -35,14 +35,14 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-teal-500 to-black">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
       <form
         onSubmit={handleSubmit}
-        className="bg-black bg-opacity-50 p-10 rounded-lg shadow-2xl w-96"
+        className="bg-white p-10 rounded-lg shadow-2xl w-96"
       >
-        <h2 className="text-4xl font-extrabold mb-8 text-center text-white">Login</h2>
+        <h2 className="text-4xl font-extrabold mb-8 text-center">Login</h2>
         <div className="mb-6">
-          <label htmlFor="email" className="block text-lg font-medium text-gray-300">
+          <label htmlFor="email" className="block text-lg font-medium text-gray-700">
             Email
           </label>
           <input
@@ -51,11 +51,11 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-black bg-opacity-5 text-white"
+            className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
         <div className="mb-8">
-          <label htmlFor="password" className="block text-lg font-medium text-gray-300">
+          <label htmlFor="password" className="block text-lg font-medium text-gray-700">
             Password
           </label>
           <input
@@ -64,7 +64,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-black bg-opacity-5 text-white"
+            className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
         <button type="submit" className="w-full py-3 text-lg text-white bg-gradient-to-r from-green-400 to-blue-500 rounded-lg hover:bg-gradient-to-l">
