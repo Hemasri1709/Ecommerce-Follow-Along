@@ -580,6 +580,52 @@ This lesson will help you understand how to implement an order confirmation page
 - Added a "Place Order" button at the bottom of the order confirmation page.
 - Ensured the `OrderConfirmation` component correctly handles the state passed from the `SelectAddress` component.
 
+## Milestone 25
+
+### Summary
+
+In this milestone, we created a backend endpoint to place orders. The endpoint receives products, user, and address details. Using the user's email, we retrieve the user's `_id` and store the order details in the MongoDB order collection using the order schema.
+
+### Changes Made
+
+1. **Database Configuration**:
+   - Updated the MongoDB connection string to use environment variables for security.
+
+2. **Environment Variables**:
+   - Created a `.env` file to store the MongoDB connection string.
+
+3. **Server Configuration**:
+   - Loaded environment variables at the start of the server file.
+
+### Files Modified
+
+- `backend/configurations/db.js`
+- `backend/.env`
+- `backend/server.js`
+
+### How to Run
+
+1. Clone the repository.
+2. Create a `.env` file in the `backend` directory with the following content:
+   ```
+   MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.q8t0m.mongodb.net/sujal-ecommerce
+   ```
+3. Install dependencies:
+   ```
+   npm install
+   ```
+4. Start the server:
+   ```
+   npm start
+   ```
+5. The server will be running on port 4000.
+
+### Endpoint
+
+- **Place Order**: `POST /api/orders`
+  - Receives products, user, and address details.
+  - Stores order details in the MongoDB order collection.
+
 
 
 
