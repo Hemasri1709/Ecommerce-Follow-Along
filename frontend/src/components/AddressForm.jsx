@@ -8,11 +8,13 @@ const AddressForm = () => {
         address1: "",
         address2: "",
         zipCode: "",
-        addressType: ""
+        addressType: "",
     });
+
     const navigate = useNavigate();
     const location = useLocation();
     const [email, setEmail] = useState("");
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
@@ -23,7 +25,7 @@ const AddressForm = () => {
         const { name, value } = e.target;
         setAddress((prevAddress) => ({
             ...prevAddress,
-            [name]: value
+            [name]: value,
         }));
     };
 
@@ -32,93 +34,58 @@ const AddressForm = () => {
         fetch("http://localhost:4000/api/users/add-address", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify({ email, address })
+            body: JSON.stringify({ email, address }),
         })
             .then((response) => response.json())
             .then((data) => {
-                navigate(`/profile/${email}`);
+                if (data.success) {
+                    navigate(`/profile/${email}`);
+                } else {
+                    setError(data.message);
+                }
             })
-            .catch((error) => console.error("Error adding address:", error));
+            .catch((error) => {
+                console.error("Error adding address:", error);
+                setError("An error occurred while adding the address.");
+            });
     };
 
     return (
-        <div className="container mx-auto p-8">
-            <h1 className="text-3xl font-bold mb-6">Add Address</h1>
-            <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg p-4">
-                <div className="mb-4">
-                    <label className="block text-gray-700">Country</label>
-                    <input
-                        type="text"
-                        name="country"
-                        value={address.country}
-                        onChange={handleChange}
-                        className="border border-gray-300 p-2 rounded-lg w-full"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700">City</label>
-                    <input
-                        type="text"
-                        name="city"
-                        value={address.city}
-                        onChange={handleChange}
-                        className="border border-gray-300 p-2 rounded-lg w-full"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700">Address 1</label>
-                    <input
-                        type="text"
-                        name="address1"
-                        value={address.address1}
-                        onChange={handleChange}
-                        className="border border-gray-300 p-2 rounded-lg w-full"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700">Address 2</label>
-                    <input
-                        type="text"
-                        name="address2"
-                        value={address.address2}
-                        onChange={handleChange}
-                        className="border border-gray-300 p-2 rounded-lg w-full"
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700">Zip Code</label>
-                    <input
-                        type="text"
-                        name="zipCode"
-                        value={address.zipCode}
-                        onChange={handleChange}
-                        className="border border-gray-300 p-2 rounded-lg w-full"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700">Address Type</label>
-                    <input
-                        type="text"
-                        name="addressType"
-                        value={address.addressType}
-                        onChange={handleChange}
-                        className="border border-gray-300 p-2 rounded-lg w-full"
-                        required
-                    />
-                </div>
-                <button
-                    type="submit"
-                    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all duration-200"
-                >
-                    Add Address
-                </button>
-            </form>
+        <div className="flex items-center justify-center min-h-screen bg-[#F9F6F2]">
+            <div className="container mx-auto p-8 bg-white shadow-lg rounded-lg max-w-lg">
+                
+                {/* Header */}
+                <h1 className="text-4xl font-extrabold text-[#4E3629] text-center mb-6">Add Address</h1>
+                {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+
+                {/* Address Form */}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    
+                    {["Country", "City", "Address 1", "Address 2", "Zip Code", "Address Type"].map((field, index) => (
+                        <div key={index}>
+                            <label className="block text-[#7D5A50] font-medium">{field}</label>
+                            <input
+                                type="text"
+                                name={field.toLowerCase().replace(" ", "")}
+                                value={address[field.toLowerCase().replace(" ", "")]}
+                                onChange={handleChange}
+                                className="border border-gray-300 p-3 rounded-lg w-full text-[#4E3629] focus:outline-none focus:ring-2 focus:ring-[#8B5E3C]"
+                                required={field !== "Address 2"}
+                            />
+                        </div>
+                    ))}
+
+                    {/* Submit Button */}
+                    <button
+                        type="submit"
+                        className="w-full bg-[#8B5E3C] hover:bg-[#6A4423] text-white font-medium px-4 py-3 rounded-lg shadow-lg transition-all duration-300"
+                    >
+                        Add Address
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };

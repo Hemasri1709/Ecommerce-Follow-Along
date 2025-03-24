@@ -1,4 +1,3 @@
-require('dotenv').config()
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const path = require("path");
@@ -7,6 +6,7 @@ const connectDB = require("./configurations/db");
 const userRouter = require("./routes/userRoute");
 const productRouter = require("./routes/productRoute");
 const cartRouter = require("./routes/cartRoute");
+const orderRouter = require("./routes/orderRoute"); // Import orderRouter
 const cors = require("cors");
 
 app.use(express.json());
@@ -23,10 +23,11 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use("/api/cart", cartRouter);
+app.use("/api/orders", orderRouter); // Add orderRouter
 
 connectDB().then(() => {
     app.listen(4000, () => {
-        console.log("Server is listening on port 4000" );
+        console.log("Server is listening on port 4000 ");
     });
 }).catch((error) => {
     console.error("Failed to connect to the database:", error);

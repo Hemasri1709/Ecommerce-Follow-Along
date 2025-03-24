@@ -9,6 +9,7 @@ const SignUp = () => {
     });
 
     const [passwordErrors, setPasswordErrors] = useState([]);
+    const [error, setError] = useState(null);
 
     const validatePassword = (password) => {
         const errors = [];
@@ -48,34 +49,33 @@ const SignUp = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(formData),
-            })
+            });
 
             if (response.ok) {
-                // Redirect to login page or home page after successful signup
+                // Redirect to login page after successful signup
                 window.location.href = "/login";
             } else {
-                // Handle errors returned from the backend
                 const errorData = await response.json();
-                alert(errorData.message);
+                setError(errorData.message);
             }
-
-    } catch (error) {
-        console.error("Error:", error.message);
-    }
-};
+        } catch (error) {
+            console.error("Error:", error.message);
+            setError("An error occurred while signing up.");
+        }
+    };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
-            <div className="w-full max-w-lg p-10 bg-white rounded-lg shadow-2xl">
-                <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-8">Create Account</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-6">
-                        <label
-                            htmlFor="name"
-                            className="block text-lg font-medium text-gray-700 mb-2"
-                        >
-                            Full Name
-                        </label>
+        <div className="flex justify-center items-center min-h-screen bg-[#F9F6F2]">
+            <div className="bg-white shadow-lg rounded-xl p-8 w-[400px]">
+                
+                {/* Sign Up Header */}
+                <h2 className="text-4xl font-bold text-[#4E3629] text-center mb-6">Create Account</h2>
+                {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+
+                {/* Sign Up Form */}
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                        <label htmlFor="name" className="block text-lg font-medium text-[#7D5A50]">Full Name</label>
                         <input
                             type="text"
                             id="name"
@@ -83,16 +83,11 @@ const SignUp = () => {
                             value={formData.name}
                             onChange={handleChange}
                             required
-                            className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4E3629] focus:border-[#4E3629] text-[#4E3629]"
                         />
                     </div>
-                    <div className="mb-6">
-                        <label
-                            htmlFor="email"
-                            className="block text-lg font-medium text-gray-700 mb-2"
-                        >
-                            Email Address
-                        </label>
+                    <div>
+                        <label htmlFor="email" className="block text-lg font-medium text-[#7D5A50]">Email Address</label>
                         <input
                             type="email"
                             id="email"
@@ -100,16 +95,11 @@ const SignUp = () => {
                             value={formData.email}
                             onChange={handleChange}
                             required
-                            className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4E3629] focus:border-[#4E3629] text-[#4E3629]"
                         />
                     </div>
-                    <div className="mb-8">
-                        <label
-                            htmlFor="password"
-                            className="block text-lg font-medium text-gray-700 mb-2"
-                        >
-                            Password
-                        </label>
+                    <div>
+                        <label htmlFor="password" className="block text-lg font-medium text-[#7D5A50]">Password</label>
                         <input
                             type="password"
                             id="password"
@@ -117,7 +107,7 @@ const SignUp = () => {
                             value={formData.password}
                             onChange={handleChange}
                             required
-                            className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4E3629] focus:border-[#4E3629] text-[#4E3629]"
                         />
                         {/* Display Password Validation Errors */}
                         <ul className="mt-3 text-sm text-red-500">
@@ -128,15 +118,17 @@ const SignUp = () => {
                     </div>
                     <button
                         type="submit"
-                        className="w-full py-3 text-lg text-white bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg hover:bg-gradient-to-l focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        className="w-full text-lg font-semibold text-white bg-[#4E3629] py-3 rounded-lg hover:bg-[#7D5A50] transition-all duration-300"
                         disabled={passwordErrors.length > 0}
                     >
                         Sign Up
                     </button>
                 </form>
+
+                {/* Login Link */}
                 <div className="text-center mt-4">
-                    <Link to="/login" className="text-blue-500 hover:underline">
-                        Already have an account? Login here
+                    <Link to="/login" className="text-[#4E3629] hover:underline">
+                        Already have an account? <span className="font-bold">Login here</span>
                     </Link>
                 </div>
             </div>
@@ -145,4 +137,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-

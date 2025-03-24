@@ -5,7 +5,7 @@ const Cart = () => {
     const [cartProducts, setCartProducts] = useState([]);
     const userId = "67b5689b220a98f43212a3be"; // Replace with actual user ID
     const navigate = useNavigate();
-    const userEmail = "vimlabhatt97@gmail.com"; // Replace with the actual user email
+    const userEmail = "guthulahemasri410@gmail.com"; // Replace with the actual user email
 
     useEffect(() => {
         fetch(`http://localhost:4000/api/cart/${userId}`)
@@ -36,32 +36,53 @@ const Cart = () => {
     const validCartProducts = cartProducts.filter(product => product.product && product.product.images);
 
     return (
-        <div className="container mx-auto p-8">
-            <h1 className="text-3xl font-bold mb-6">My Cart</h1>
+        <div className="container mx-auto px-6 py-8">
+            <h1 className="text-3xl font-bold text-[#5C3D2E] mb-6">🛒 My Cart</h1>
+
             {validCartProducts.length === 0 ? (
-                <p>Your cart is empty</p>
+                <p className="text-lg text-gray-600">Your cart is empty</p>
             ) : (
                 <>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {validCartProducts.map(product => (
-                            <div key={product.product._id} className="bg-white shadow-lg rounded-lg p-4">
-                                <img src={`http://localhost:4000/uploads/${product.product.images[0]}`} alt={product.product.name} className="w-full h-40 object-cover rounded-md mb-4" />
-                                <h2 className="text-xl font-semibold">{product.product.name}</h2>
-                                <p className="text-lg font-bold text-gray-700">${product.product.price}</p>
-                                <div className="flex items-center mt-4">
-                                    <button onClick={() => updateQuantity(product.product._id, product.quantity - 1)} className="bg-gray-300 text-gray-700 px-2 py-1 rounded-l">-</button>
-                                    <span className="px-4">{product.quantity}</span>
-                                    <button onClick={() => updateQuantity(product.product._id, product.quantity + 1)} className="bg-gray-300 text-gray-700 px-2 py-1 rounded-r">+</button>
+                            <div key={product.product._id} className="bg-[#FDF6EC] shadow-lg rounded-xl p-5 transition-all duration-300 hover:shadow-xl">
+                                <img 
+                                    src={`http://localhost:4000/uploads/${product.product.images[0]}`} 
+                                    alt={product.product.name} 
+                                    className="w-full h-44 object-cover rounded-lg mb-4 shadow-sm"
+                                />
+                                <h2 className="text-xl font-bold text-[#5C3D2E]">{product.product.name}</h2>
+                                <p className="text-lg font-semibold text-[#9C6B3C] mt-1">${product.product.price}</p>
+
+                                {/* Quantity Controls */}
+                                <div className="flex items-center justify-center mt-4 bg-[#E2C799] py-2 rounded-lg shadow-md">
+                                    <button 
+                                        onClick={() => updateQuantity(product.product._id, product.quantity - 1)} 
+                                        className="px-3 py-1 text-[#5C3D2E] font-semibold text-lg hover:bg-[#D2B48C] transition-all duration-200 rounded-l"
+                                    >
+                                        -
+                                    </button>
+                                    <span className="px-4 text-[#5C3D2E] font-semibold">{product.quantity}</span>
+                                    <button 
+                                        onClick={() => updateQuantity(product.product._id, product.quantity + 1)} 
+                                        className="px-3 py-1 text-[#5C3D2E] font-semibold text-lg hover:bg-[#D2B48C] transition-all duration-200 rounded-r"
+                                    >
+                                        +
+                                    </button>
                                 </div>
                             </div>
                         ))}
                     </div>
-                    <button
-                        onClick={handlePlaceOrder}
-                        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all duration-200 mt-4"
-                    >
-                        Place Order
-                    </button>
+
+                    {/* Place Order Button */}
+                    <div className="flex justify-center mt-6">
+                        <button
+                            onClick={handlePlaceOrder}
+                            className="bg-[#C57B57] text-white px-6 py-3 rounded-lg shadow-md hover:bg-[#A35E3B] transition-all duration-200"
+                        >
+                            ✅ Place Order
+                        </button>
+                    </div>
                 </>
             )}
         </div>
